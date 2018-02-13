@@ -10,23 +10,22 @@ var authUser = function (req, res, next) {
     res.status(401).json('Invalid token');
 }
 
+var validId = function (req, res, next) {
+    for (var i = 0; i < lib.allTodo().length; i++) {
+        if (lib.allTodo()[i].id === parseInt(req.params.id)) {
+            return next();
+        }
+    }
+    return res.status(404).json({ message: 'Invalid ID' })
+}
+
 router.get('/todo', authUser, function (req, res) {
     res.status(200).json(lib.allTodo());
 });
 
-router.get('/completed/:id', authUser,
-    function (req, res, next) {
-        for (var i = 0; i < lib.allTodo().length; i++) {
-            if (lib.allTodo()[i].id === parseInt(req.params.id)) {
-                return next();
-            }
-        }
-        return res.status(404).json({ message: 'Invalid ID' })
-    },
-
-    function (req, res) {
+router.get('/completed/:id', authUser, validId, function (req, res) {
         res.json(lib.completed(parseInt(req.params.id)));
-    })
+    });
 
 
 

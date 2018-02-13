@@ -3,8 +3,8 @@ var request = require('supertest');
 var app = require('./app');
 
 
-describe('Creator', function () {
-  it('return all products', function (done) {
+describe('API Creator', function () {
+  it('return all list', function (done) {
     request(app)
       .get('/creator/todo?token=Pippo')
       .set('Accept', 'application/json')
@@ -76,26 +76,7 @@ describe('Creator', function () {
         done();
       });
   });
-  it('set true correct', function (done) {
-    request(app)
-      .get('/assigne/completed/2?token=Pippo')
-      .set('Accept', 'application/json')
-      .expect(200)
-      .end(function (err, res) {
-        if (err) return done(err);
-        done();
-      });
-  });
-  it('set true wrong', function (done) {
-    request(app)
-      .get('/assigne/completed/45?token=Pippo')
-      .set('Accept', 'application/json')
-      .expect(404)
-      .end(function (err, res) {
-        if (err) return done(err);
-        done();
-      });
-  });
+
   it('add users correct', function (done) {
     request(app)
       .post('/creator/addUser?token=Pippo')
@@ -114,6 +95,29 @@ describe('Creator', function () {
       .send({ id: 1, name: "Luca" })
       .set('Accept', 'application/json')
       .expect(400)
+      .end(function (err, res) {
+        if (err) return done(err);
+        done();
+      });
+  });
+});
+
+describe('API Assignee', function () {
+  it('set true correct', function (done) {
+    request(app)
+      .get('/assignee/completed/2?token=Pippo')
+      .set('Accept', 'application/json')
+      .expect(200)
+      .end(function (err, res) {
+        if (err) return done(err);
+        done();
+      });
+  });
+  it('set true wrong', function (done) {
+    request(app)
+      .get('/assignee/completed/45?token=Pippo')
+      .set('Accept', 'application/json')
+      .expect(404)
       .end(function (err, res) {
         if (err) return done(err);
         done();

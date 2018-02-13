@@ -4,10 +4,10 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 var creator = require('./routes/creator');
-var assigne = require('./routes/assigne');
+var assignee = require('./routes/assignee');
 
 app.use('/creator', creator);
-app.use('/assigne', assigne);
+app.use('/assignee', assignee);
 
 app.listen(3001);
 module.exports = app;

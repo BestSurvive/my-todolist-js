@@ -72,8 +72,11 @@ router.get('/todo', auth, function (req, res) {
     res.status(200).json(lib.allTodo());
 });
 
-router.get('/statusList', auth, function (req, res) {
-    res.json(lib.allTrueFalse());
+router.get('/statusFalse', auth, function (req, res) {
+    res.json(lib.allFalse());
+});
+router.get('/statusTrue', auth, function (req, res) {
+    res.json(lib.allTrue());
 });
 
 router.get('/allUsers', auth, function (req, res) {
