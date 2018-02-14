@@ -1,15 +1,8 @@
 {
-  "name": "my-todolist-js",
+  "name": "my-todolist-js-api",
   "version": "1.0.0",
-  "description": "This modules contains API for my-todolist.js package npm",
+  "description": "This modules contains all API for \"my-todolist-js\" NPM package",
   "main": "app.js",
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "my-todolist-js": "^1.0.2",
-    "supertest": "^3.0.0"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "mocha"
   },
@@ -18,10 +11,9 @@
     "url": "git+https://github.com/BestSurvive/my-todolist-js.git"
   },
   "keywords": [
-    "todolist",
     "api",
-    "work",
-    "activity"
+    "todolist",
+    "js"
   ],
   "author": "Luca Cortile <cortilel@gmail.com>",
   "license": "MIT",
